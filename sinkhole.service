@@ -7,8 +7,9 @@ After=network.target mysql.service
 ExecStart=/usr/bin/python3 /opt/sinkhole/traffic_logger.py
 WorkingDirectory=/opt/sinkhole
 Restart=on-failure
-User=root
+User=sinkhole
 ExecStartPre=/opt/sinkhole/iptables_setup.sh
 
 [Install]
 WantedBy=multi-user.target
+
