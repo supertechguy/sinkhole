@@ -7,6 +7,14 @@ INSTALL_DIR="/opt/sinkhole"
 SERVICE_FILE="/etc/systemd/system/sinkhole.service"
 MYSQL_SCRIPT="mysql_setup.sql"
 
+# Create sinkhole user if it doesn't exist
+if id "sinkhole" &>/dev/null; then
+    echo "User 'sinkhole' already exists."
+else
+    echo "Creating user 'sinkhole'..."
+    sudo useradd -r -s /usr/sbin/nologin sinkhole
+fi
+
 # Create install directory
 sudo mkdir -p $INSTALL_DIR
 sudo cp -r * $INSTALL_DIR
